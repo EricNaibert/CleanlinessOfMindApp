@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx">
+   <ImageView cache="true" fitHeight="720.0" fitWidth="1497.0" layoutX="-254.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-254.0" AnchorPane.rightAnchor="-242.1038818359375" AnchorPane.topAnchor="0.0">
+      <Image url="@images/landscape.jpg" />
+   </ImageView>
+   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="318.0" layoutY="21.0" text="Journey to Cleanliness of The Mind" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="318.0" AnchorPane.rightAnchor="318.79999999999995" AnchorPane.topAnchor="21.0">
+      <font>
+         <Font name="System Bold" size="22.0" />
+      </font>
+   </Label>
+</AnchorPane>
