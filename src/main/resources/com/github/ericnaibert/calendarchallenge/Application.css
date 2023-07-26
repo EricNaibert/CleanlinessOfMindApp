@@ -4,6 +4,12 @@
     -fx-text-fill: white;
 }
 
+#buttonsId {
+    -fx-font-size: 17;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
 #dayNumberId {
     -fx-font-weight: bold;
 }

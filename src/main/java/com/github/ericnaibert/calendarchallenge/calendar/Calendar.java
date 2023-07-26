@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +16,8 @@ public class Calendar extends ApplicationInterface {
 
     public static void calendar() {
 
+        TimeTools time = new TimeTools();
         Color translucentWhite = new Color(1.0, 1.0, 1.0, 0.5);
-
-        int monthNow = LocalDate.now().getMonthValue();
-        int yearNow = LocalDate.now().getYear();
-        int lengthOfMonth = LocalDate.now().lengthOfMonth();
-        int firstDayOfMonth = LocalDate.of(yearNow, monthNow, 1).getDayOfWeek().getValue();
 
         FlowPane flowPane = new FlowPane();
         flowPane.setPrefWidth(900);
@@ -47,15 +42,16 @@ public class Calendar extends ApplicationInterface {
             flowPane.getChildren().add(vBox);
         }
 
-        for(int j = 0; j < lengthOfMonth; j++) {
+        for(int j = 0; j < time.getLengthOfMonth(); j++) {
 
             Label dayNumber;
-            vBoxList.get(j+firstDayOfMonth).getChildren().add(dayNumber = new Label());
+            vBoxList.get(j+time.getFirstDayOfMonth()).getChildren().add(dayNumber = new Label());
             dayNumber.setText(String.valueOf(j+1));
             dayNumber.setId("dayNumberId");
         }
 
         DayNameLabel.dayNameLabel();
+        CheckDayButton.addCheckButton();
         root.getChildren().add(flowPane);
 
     }
