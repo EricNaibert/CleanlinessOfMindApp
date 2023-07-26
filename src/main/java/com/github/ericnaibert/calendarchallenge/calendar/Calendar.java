@@ -1,5 +1,6 @@
-package com.github.ericnaibert.calendarchallenge;
+package com.github.ericnaibert.calendarchallenge.calendar;
 
+import com.github.ericnaibert.calendarchallenge.ApplicationInterface;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -48,31 +49,14 @@ public class Calendar extends ApplicationInterface {
 
         for(int j = 0; j < lengthOfMonth; j++) {
 
-            vBoxList.get(j+firstDayOfMonth).getChildren().add(new Label(String.valueOf(j+1)));
+            Label dayNumber;
+            vBoxList.get(j+firstDayOfMonth).getChildren().add(dayNumber = new Label());
+            dayNumber.setText(String.valueOf(j+1));
+            dayNumber.setId("dayNumberId");
         }
 
-        int x = 80;
-
-        for(int i = 0; i < 7; i++) {
-            Label dayNameLabel = new Label();
-            switch (i) {
-                case 0 -> dayNameLabel.setText("Domingo");
-                case 1 -> dayNameLabel.setText("Segunda");
-                case 2 -> dayNameLabel.setText("Terça");
-                case 3 -> dayNameLabel.setText("Quarta");
-                case 4 -> dayNameLabel.setText("Quinta");
-                case 5 -> dayNameLabel.setText("Sexta");
-                case 6 -> dayNameLabel.setText("Sábado");
-            }
-            dayNameLabel.setId("dayNameLabelId");
-            dayNameLabel.setLayoutY(120);
-            dayNameLabel.setLayoutX(x);
-            root.getChildren().add(dayNameLabel);
-            x += 130;
-        }
-
+        DayNameLabel.dayNameLabel();
         root.getChildren().add(flowPane);
 
     }
-
 }

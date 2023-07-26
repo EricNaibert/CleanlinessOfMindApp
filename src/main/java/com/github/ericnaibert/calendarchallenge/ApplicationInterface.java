@@ -1,5 +1,6 @@
 package com.github.ericnaibert.calendarchallenge;
 
+import com.github.ericnaibert.calendarchallenge.calendar.Calendar;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;

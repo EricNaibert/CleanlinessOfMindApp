@@ -6,4 +6,6 @@ module com.github.ericnaibert.calendarchallenge {
 
     opens com.github.ericnaibert.calendarchallenge to javafx.fxml;
     exports com.github.ericnaibert.calendarchallenge;
+    exports com.github.ericnaibert.calendarchallenge.calendar;
+    opens com.github.ericnaibert.calendarchallenge.calendar to javafx.fxml;
 }

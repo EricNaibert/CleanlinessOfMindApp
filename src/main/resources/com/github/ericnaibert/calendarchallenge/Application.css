@@ -3,3 +3,7 @@
     -fx-font-weight: bold;
     -fx-text-fill: white;
 }
+
+#dayNumberId {
+    -fx-font-weight: bold;
+}
