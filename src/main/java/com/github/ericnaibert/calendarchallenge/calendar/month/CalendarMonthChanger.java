@@ -12,13 +12,16 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
-import java.time.LocalDate;
 
 public class CalendarMonthChanger extends ApplicationInterface {
+
+    protected static Label monthAndYear;
 
     public static void monthProperties() {
 
         TimeTools time = new TimeTools();
+        MonthButtonHandler monthButtonHandler = new MonthButtonHandler();
+        MonthTools monthTools = new MonthTools();
 
         HBox hBox = new HBox();
         hBox.setLayoutX(300);
@@ -29,19 +32,17 @@ public class CalendarMonthChanger extends ApplicationInterface {
         hBox.setAlignment(Pos.CENTER);
         hBox.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0.7;");
 
-        String showMonth;
-        showMonth = String.valueOf(LocalDate.of(time.getYearNow(), time.getMonthNow(), 1).getMonth());
-
-        MonthButtonHandler monthButtonHandler = new MonthButtonHandler();
         Button previousMonth = new Button("<");
         previousMonth.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
         previousMonth.setId("monthAndYearId");
         previousMonth.setOnMouseClicked(monthButtonHandler.previousEventHandler);
         hBox.getChildren().add(previousMonth);
 
-        Label monthAndYear = new Label();
-        monthAndYear.setText(showMonth + ", " + time.getYearNow());
+        monthAndYear = new Label();
+        monthAndYear.setText(MonthButtonHandler.getShowMonth() + ", " + time.getYearNow());
         monthAndYear.setId("monthAndYearId");
+        MonthButtonHandler.setShowMonth(String.valueOf(monthTools.getMonthString(monthTools.getCurrentShownMonth(0))));
+        monthAndYear.setText(MonthButtonHandler.getShowMonth() + ", " + MonthTools.getYear());
         hBox.getChildren().add(monthAndYear);
 
         Button nextMonth = new Button(">");
