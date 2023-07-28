@@ -53,13 +53,9 @@ public class Calendar extends ApplicationInterface {
         }
 
         DayMonthReader.dayMonthReader();
+        DayNameLabel.dayNameLabel();
 
         CalendarMonthChanger.monthProperties();
-
-        CheckDayOld.checkOldDays();
-
-        DayNameLabel.dayNameLabel();
-        CheckDayButton.addCheckButton();
 
         root.getChildren().add(flowPane);
     }

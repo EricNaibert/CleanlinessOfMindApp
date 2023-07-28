@@ -75,4 +75,8 @@ public class MonthTools {
     public static Integer getYear() {
         return year;
     }
+
+    public static int getArrayScanner() {
+        return arrayScanner;
+    }
 }

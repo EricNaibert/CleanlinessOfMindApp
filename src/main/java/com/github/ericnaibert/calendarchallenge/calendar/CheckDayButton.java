@@ -14,12 +14,14 @@ import java.util.Objects;
 
 public class CheckDayButton extends Calendar {
 
+    private static Button button;
+
     public static void addCheckButton() {
 
         int buttonX = 750;
         int buttonY = 55;
 
-        Button button = new Button();
+        button = new Button();
         button.setBackground(Background.fill(Color.WHITE));
         button.setText("CHECK DAY");
         button.setId("buttonsId");
@@ -51,4 +53,7 @@ public class CheckDayButton extends Calendar {
         root.getChildren().add(button);
     }
 
+    public static Button getButton() {
+        return button;
+    }
 }

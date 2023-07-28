@@ -1,6 +1,8 @@
 package com.github.ericnaibert.calendarchallenge.calendar.month;
 
 import com.github.ericnaibert.calendarchallenge.ApplicationInterface;
+import com.github.ericnaibert.calendarchallenge.calendar.CheckDayButton;
+import com.github.ericnaibert.calendarchallenge.calendar.CheckDayOld;
 import com.github.ericnaibert.calendarchallenge.calendar.TimeTools;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -54,6 +56,10 @@ public class CalendarMonthChanger extends ApplicationInterface {
         nextMonth.setId("monthAndYearId");
         nextMonth.setOnMouseClicked(monthButtonHandler.nextEventHandler);
         hBox.getChildren().add(nextMonth);
+
+        CheckDayOld.checkOldDays(time.getMonthNow());
+        CheckDayButton.addCheckButton();
+
 
         root.getChildren().add(hBox);
 
