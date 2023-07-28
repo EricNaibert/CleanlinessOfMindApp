@@ -56,6 +56,7 @@ public class Calendar extends ApplicationInterface {
 
         DayNameLabel.dayNameLabel();
         CheckDayButton.addCheckButton();
+
         root.getChildren().add(flowPane);
     }
 }
