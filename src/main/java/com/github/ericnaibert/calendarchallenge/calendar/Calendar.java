@@ -1,6 +1,7 @@
 package com.github.ericnaibert.calendarchallenge.calendar;
 
 import com.github.ericnaibert.calendarchallenge.ApplicationInterface;
+import com.github.ericnaibert.calendarchallenge.storage.DayMonthReader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class Calendar extends ApplicationInterface {
 
-    private static final List<VBox> vBoxList = new ArrayList<>();
+    public static final List<VBox> vBoxList = new ArrayList<>();
 
     public static void calendar() {
 
@@ -50,9 +51,11 @@ public class Calendar extends ApplicationInterface {
             dayNumber.setId("dayNumberId");
         }
 
+        DayMonthReader.dayMonthReader();
+        CheckDayOld.checkOldDays();
+
         DayNameLabel.dayNameLabel();
         CheckDayButton.addCheckButton();
         root.getChildren().add(flowPane);
-
     }
 }

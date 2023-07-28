@@ -1,6 +1,9 @@
 package com.github.ericnaibert.calendarchallenge.calendar;
 
+import com.github.ericnaibert.calendarchallenge.storage.DayMonthReader;
+
 import java.time.LocalDate;
+import java.util.List;
 
 public class TimeTools {
 
@@ -8,7 +11,9 @@ public class TimeTools {
     private final int yearNow = LocalDate.now().getYear();
     private final int dayNow = LocalDate.now().getDayOfMonth();
     private final int lengthOfMonth = LocalDate.now().lengthOfMonth();
-    private final int firstDayOfMonth = LocalDate.of(yearNow, monthNow, 1).getDayOfWeek().getValue();
+    private final List<Integer> olderPositions = DayMonthReader.getReadedDays().stream().toList();
+    private final int firstDayOfMonth = LocalDate.of(getYearNow(), getMonthNow(), 1).getDayOfWeek().getValue();
+    private final int positionToCheck = getDayNow() + getFirstDayOfMonth() -1;
 
     public int getMonthNow() {
         return monthNow;
@@ -28,5 +33,13 @@ public class TimeTools {
 
     public int getFirstDayOfMonth() {
         return firstDayOfMonth;
+    }
+
+    public int getPositionToCheck() {
+        return positionToCheck;
+    }
+
+    public List<Integer> getOlderPositions() {
+        return olderPositions;
     }
 }
