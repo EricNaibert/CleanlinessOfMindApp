@@ -28,7 +28,7 @@ public class CalendarMonthChanger extends ApplicationInterface {
         hBox.setLayoutY(70);
         hBox.setPrefHeight(30);
         hBox.setPrefWidth(400);
-        hBox.setSpacing(100);
+        hBox.setSpacing(50);
         hBox.setAlignment(Pos.CENTER);
         hBox.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0.7;");
 
@@ -41,8 +41,12 @@ public class CalendarMonthChanger extends ApplicationInterface {
         monthAndYear = new Label();
         monthAndYear.setText(MonthButtonHandler.getShowMonth() + ", " + time.getYearNow());
         monthAndYear.setId("monthAndYearId");
+        monthAndYear.setAlignment(Pos.CENTER);
+        monthAndYear.setPrefWidth(400);
+
         MonthButtonHandler.setShowMonth(String.valueOf(monthTools.getMonthString(monthTools.getCurrentShownMonth(0))));
         monthAndYear.setText(MonthButtonHandler.getShowMonth() + ", " + MonthTools.getYear());
+
         hBox.getChildren().add(monthAndYear);
 
         Button nextMonth = new Button(">");

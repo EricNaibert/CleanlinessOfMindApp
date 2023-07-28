@@ -56,7 +56,7 @@ public class MonthTools {
 
         if(direction == -1) {
 
-            if(arrayScanner < 2) {
+            if(arrayScanner < 1) {
                 arrayScanner = 11;
                 year = year - 1;
 
