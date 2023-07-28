@@ -3,6 +3,7 @@ package com.github.ericnaibert.calendarchallenge.calendar;
 import com.github.ericnaibert.calendarchallenge.Main;
 import com.github.ericnaibert.calendarchallenge.storage.DayMonthReader;
 import com.github.ericnaibert.calendarchallenge.storage.DayMonthStorage;
+import com.github.ericnaibert.calendarchallenge.storage.PathDirectory;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,12 +32,19 @@ public class CheckDayButton extends Calendar {
             Image checkImage = new Image((Objects.requireNonNull(imgPath)));
 
             TimeTools time = new TimeTools();
+            PathDirectory file = new PathDirectory();
 
-            if (DayMonthReader.getReadedDays().get(DayMonthReader.getReadedDays().size() - 1) != time.getPositionToCheck()) {
 
-                DayMonthStorage.dayMonthStorage();
-                Calendar.vBoxList.get(time.getPositionToCheck()).getChildren().add(new ImageView(checkImage));
-            }
+                if(!file.getFileToSave().exists()) {
+                    DayMonthStorage.dayMonthStorage();
+                    Calendar.vBoxList.get(time.getPositionToCheck()).getChildren().add(new ImageView(checkImage));
+                }
+
+                if (!DayMonthReader.getReadedDays().isEmpty() && DayMonthReader.getReadedDays().get(DayMonthReader.getReadedDays().size() - 1) != time.getPositionToCheck()) {
+
+                    DayMonthStorage.dayMonthStorage();
+                    Calendar.vBoxList.get(time.getPositionToCheck()).getChildren().add(new ImageView(checkImage));
+                }
 
         });
 

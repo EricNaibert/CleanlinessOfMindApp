@@ -14,16 +14,9 @@ public class DayMonthStorage {
         String pathSeparator = File.separator;
         String userHome = System.getProperty("user.home");
 
-        try {
-            Path path = Path.of(userHome + pathSeparator + "MindCleanlinessApp");
-            Files.createDirectories(path);
-
-        } catch (IOException e) {
-            System.out.println("Storage / Exception: " + e);
-        }
+        TimeTools time = new TimeTools();
 
         File fileToSave = new File(userHome + pathSeparator + "MindCleanlinessApp" + pathSeparator + "DayOnGrid.jcm");
-        TimeTools time = new TimeTools();
 
         try {
 
