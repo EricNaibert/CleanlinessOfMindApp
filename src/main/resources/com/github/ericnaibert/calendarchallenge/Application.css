@@ -1,3 +1,16 @@
+@import url('http://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+Label{
+    -fx-font-family: Inter;
+}
+
+#monthAndYearId {
+    -fx-font-family: Inter;
+    -fx-font-size: 17;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
 #dayNameLabelId {
     -fx-font-size: 17;
     -fx-font-weight: bold;

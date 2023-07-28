@@ -27,6 +27,7 @@ public class ApplicationInterface extends Application {
         Calendar.calendar();
 
         stage.setTitle("Calendar Challenge");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

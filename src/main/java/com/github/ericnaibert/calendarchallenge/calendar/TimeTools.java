@@ -8,6 +8,8 @@ import java.util.List;
 public class TimeTools {
 
     private final int monthNow = LocalDate.now().getMonthValue();
+    private final int monthOld = LocalDate.now().minusMonths(1).getMonthValue();
+    private final int monthNext = LocalDate.now().plusMonths(1).getMonthValue();
     private final int yearNow = LocalDate.now().getYear();
     private final int dayNow = LocalDate.now().getDayOfMonth();
     private final int lengthOfMonth = LocalDate.now().lengthOfMonth();
@@ -17,6 +19,14 @@ public class TimeTools {
 
     public int getMonthNow() {
         return monthNow;
+    }
+
+    public int getMonthOld() {
+        return monthOld;
+    }
+
+    public int getMonthNext() {
+        return monthNext;
     }
 
     public int getYearNow() {
