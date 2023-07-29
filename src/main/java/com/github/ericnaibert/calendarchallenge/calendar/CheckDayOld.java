@@ -2,6 +2,7 @@ package com.github.ericnaibert.calendarchallenge.calendar;
 
 import com.github.ericnaibert.calendarchallenge.Main;
 import com.github.ericnaibert.calendarchallenge.storage.CheckNodes;
+import com.github.ericnaibert.calendarchallenge.storage.DateReader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -15,19 +16,12 @@ public class CheckDayOld {
         Image checkImage = new Image((Objects.requireNonNull(imgPath)));
         ImageView greenCheck;
 
-        TimeTools time = new TimeTools();
-        /*
-        for(int i = 0; i < time.getOlderPositions().size(); i++) {
-            Calendar.vBoxList.get(time.getOlderPositions().get(i)).getChildren().add(greenCheck = new ImageView(checkImage));
+        for(int i = 0; i < DateReader.getDaysFromMonth(month).size(); i++) {
 
+            Calendar.vBoxList.get(DateReader.getDaysFromMonth(month).get(i)).getChildren().add(greenCheck = new ImageView(checkImage));
 
             CheckNodes.addToCheckList(greenCheck);
-
         }
-
-         */
-
-
     }
 
 }

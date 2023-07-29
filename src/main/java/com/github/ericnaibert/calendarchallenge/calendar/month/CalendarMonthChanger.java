@@ -58,10 +58,10 @@ public class CalendarMonthChanger extends ApplicationInterface {
         nextMonth.setOnMouseClicked(monthButtonHandler.nextEventHandler);
         hBox.getChildren().add(nextMonth);
 
-        //CheckDayOld.checkOldDays(time.getMonthNow());
         DateReader.dayMonthReader();
-        CheckDayButton.addCheckButton();
+        CheckDayOld.checkOldDays(DateReader.getFileIndexNow());
 
+        CheckDayButton.addCheckButton();
 
         root.getChildren().add(hBox);
 

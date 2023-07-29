@@ -12,7 +12,6 @@ public class DateReader {
     private static final List<Integer> monthsFromFile = new ArrayList<>();
     private static final List<List<Integer>> daysFromFile = new ArrayList<>();
     private static final List<Integer> yearsFromFile = new ArrayList<>();
-    private static final int fileIndexNow = monthsFromFile.size()-1;
 
     public static void dayMonthReader() {
 
@@ -88,7 +87,20 @@ public class DateReader {
     }
 
     public static int getFileIndexNow() {
-        return fileIndexNow;
+
+        return monthsFromFile.size()-1;
+    }
+
+    public static List<Integer> getMonthsFromFile() {
+        return monthsFromFile;
+    }
+
+    public static List<Integer> getDaysFromMonth(int month) {
+        return daysFromFile.get(month);
+    }
+
+    public static List<Integer> getYearsFromFile() {
+        return yearsFromFile;
     }
 
 }
