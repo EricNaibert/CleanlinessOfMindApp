@@ -23,6 +23,7 @@ public class MonthButtonHandler extends CalendarMonthChanger{
 
             monthAndYear.setText(MonthButtonHandler.getShowMonth() + ", " + MonthTools.getYear());
 
+            /*
             if(MonthTools.getArrayScanner() + 1 == DayMonthReader.getReadedMonth()) {
 
                 for(int i = 0; i < Calendar.vBoxList.size(); i++) {
@@ -39,6 +40,7 @@ public class MonthButtonHandler extends CalendarMonthChanger{
                 //CheckDayOld.checkOldDays(time.getMonthOld());
                 root.getChildren().remove(CheckDayButton.getButton());
             }
+             */
 
             System.out.println(MonthTools.getArrayScanner());
         }
@@ -56,6 +58,7 @@ public class MonthButtonHandler extends CalendarMonthChanger{
 
             monthAndYear.setText(MonthButtonHandler.getShowMonth() + ", " + MonthTools.getYear());
 
+            /*
             if(MonthTools.getArrayScanner() + 1 == DayMonthReader.getReadedMonth()) {
 
                 for(int i = 0; i < Calendar.vBoxList.size(); i++) {
@@ -72,6 +75,7 @@ public class MonthButtonHandler extends CalendarMonthChanger{
                 //CheckDayOld.checkOldDays(time.getMonthNext());
                 root.getChildren().remove(CheckDayButton.getButton());
             }
+            */
         }
     };
 

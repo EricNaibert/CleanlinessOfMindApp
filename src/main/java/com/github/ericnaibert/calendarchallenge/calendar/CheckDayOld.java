@@ -16,12 +16,17 @@ public class CheckDayOld {
         ImageView greenCheck;
 
         TimeTools time = new TimeTools();
+        /*
         for(int i = 0; i < time.getOlderPositions().size(); i++) {
             Calendar.vBoxList.get(time.getOlderPositions().get(i)).getChildren().add(greenCheck = new ImageView(checkImage));
 
 
             CheckNodes.addToCheckList(greenCheck);
+
         }
+
+         */
+
 
     }
 

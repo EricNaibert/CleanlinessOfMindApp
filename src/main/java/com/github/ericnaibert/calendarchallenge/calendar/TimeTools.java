@@ -11,7 +11,7 @@ public class TimeTools {
     private final int yearNow = LocalDate.now().getYear();
     private final int dayNow = LocalDate.now().getDayOfMonth();
     private final int lengthOfMonth = LocalDate.now().lengthOfMonth();
-    private final List<Integer> olderPositions = DayMonthReader.getReadedDays().stream().toList();
+    //private final List<Integer> olderPositions = DayMonthReader.getReadedDays().stream().toList();
     private final int firstDayOfMonth = LocalDate.of(getYearNow(), getMonthNow(), 1).getDayOfWeek().getValue();
     private final int positionToCheck = getDayNow() + getFirstDayOfMonth() -1;
 
@@ -47,7 +47,7 @@ public class TimeTools {
         return positionToCheck;
     }
 
-    public List<Integer> getOlderPositions() {
-        return olderPositions;
-    }
+    //public List<Integer> getOlderPositions() {
+    //    return olderPositions;
+   //}
 }

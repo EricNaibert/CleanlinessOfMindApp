@@ -9,6 +9,11 @@ import java.util.regex.Pattern;
 
 public class DateReader {
 
+    private static final List<Integer> monthsFromFile = new ArrayList<>();
+    private static final List<List<Integer>> daysFromFile = new ArrayList<>();
+    private static final List<Integer> yearsFromFile = new ArrayList<>();
+    private static final int fileIndexNow = monthsFromFile.size()-1;
+
     public static void dayMonthReader() {
 
         String pathSeparator = File.separator;
@@ -25,10 +30,6 @@ public class DateReader {
 
                 System.out.println("Full File String: " + DateStorage.getOldFileToWrite());
 
-                List<String> monthsFromFile = new ArrayList<>();
-                List<List<Integer>> daysFromFile = new ArrayList<>();
-                List<Integer> yearsFromFile = new ArrayList<>();
-
                 Pattern monthPatter = Pattern.compile("#[1-9]=");
                 Pattern daysPatter = Pattern.compile("\\[[1-9, ]{1,42}]");
                 Pattern yearsPatter = Pattern.compile("/[0-9]{1,100}#");
@@ -38,21 +39,20 @@ public class DateReader {
                 Matcher yearsMatcher = yearsPatter.matcher(DateStorage.getOldFileToWrite());
 
                 while (monthMatcher.find()) {
-                    System.out.println(monthMatcher.group());
+                    monthsFromFile.add(cleanToInteger(monthMatcher.group()));
                 }
 
                 while (daysMatcher.find()) {
-                    System.out.println(daysMatcher.group());
+                    daysFromFile.add(cleanIntegerList(daysMatcher));
                 }
 
                 while (yearsMatcher.find()) {
-                    System.out.println(yearsMatcher.group());
+                    yearsFromFile.add(cleanToInteger(yearsMatcher.group()));
                 }
 
-
-                //System.out.println("ONLY MONTHS: " + monthsFromFile);
-                //System.out.println("ONLY DAYS: " + daysFromFile);
-                //System.out.println("ONLY YEARS: " + yearsFromFile);
+                System.out.println("ONLY MONTHS: " + monthsFromFile);
+                System.out.println("ONLY DAYS: " + daysFromFile);
+                System.out.println("ONLY YEARS: " + yearsFromFile);
 
                 dataInputStream.close();
 
@@ -64,6 +64,31 @@ public class DateReader {
 
         }
 
+    }
+
+    public static Integer cleanToInteger(String stringToConvert) {
+
+        return Integer.valueOf(stringToConvert.replace("[", "").replace("]", "").
+                replace("#", "").replace("=", "").replace("/", "").
+                replace(",", ""));
+
+    }
+
+    public static List<Integer> cleanIntegerList(Matcher matcher) {
+
+        String[] tempList = matcher.group().replace("[", "").replace("]", "").
+                replace(" ", "").split(",");
+        List<Integer> tempIntegerList = new ArrayList<>();
+
+        for (String s : tempList) {
+            tempIntegerList.add(Integer.valueOf(s));
+        }
+
+        return tempIntegerList;
+    }
+
+    public static int getFileIndexNow() {
+        return fileIndexNow;
     }
 
 }
