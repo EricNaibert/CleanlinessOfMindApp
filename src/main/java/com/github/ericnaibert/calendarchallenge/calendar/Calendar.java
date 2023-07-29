@@ -2,7 +2,6 @@ package com.github.ericnaibert.calendarchallenge.calendar;
 
 import com.github.ericnaibert.calendarchallenge.ApplicationInterface;
 import com.github.ericnaibert.calendarchallenge.calendar.month.CalendarMonthChanger;
-import com.github.ericnaibert.calendarchallenge.storage.DayMonthReader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -52,7 +51,6 @@ public class Calendar extends ApplicationInterface {
             dayNumber.setId("dayNumberId");
         }
 
-        DayMonthReader.dayMonthReader();
         DayNameLabel.dayNameLabel();
 
         CalendarMonthChanger.monthProperties();

@@ -1,7 +1,5 @@
 package com.github.ericnaibert.calendarchallenge.calendar;
 
-import com.github.ericnaibert.calendarchallenge.storage.DayMonthReader;
-
 import java.time.LocalDate;
 import java.util.List;
 

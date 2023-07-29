@@ -5,7 +5,6 @@ import com.github.ericnaibert.calendarchallenge.calendar.CheckDayButton;
 import com.github.ericnaibert.calendarchallenge.calendar.CheckDayOld;
 import com.github.ericnaibert.calendarchallenge.calendar.TimeTools;
 import com.github.ericnaibert.calendarchallenge.storage.CheckNodes;
-import com.github.ericnaibert.calendarchallenge.storage.DayMonthReader;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
