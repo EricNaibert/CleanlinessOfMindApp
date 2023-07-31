@@ -72,6 +72,10 @@ public class MonthTools {
         }
     }
 
+    public int monthScannerCurrentIndex() {
+        return monthArray[arrayScanner];
+    }
+
     public int getIndexIfMonthExist() {
 
         if(DateReader.getMonthsFromFile().contains(arrayScanner+1)) {

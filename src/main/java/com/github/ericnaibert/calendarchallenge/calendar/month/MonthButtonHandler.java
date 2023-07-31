@@ -1,11 +1,13 @@
 package com.github.ericnaibert.calendarchallenge.calendar.month;
 
+import com.github.ericnaibert.calendarchallenge.calendar.CheckDayButton;
 import com.github.ericnaibert.calendarchallenge.calendar.CheckDayOld;
 import com.github.ericnaibert.calendarchallenge.calendar.TimeTools;
 import com.github.ericnaibert.calendarchallenge.storage.CheckNodes;
-import com.github.ericnaibert.calendarchallenge.storage.DateReader;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+
+import java.time.LocalDate;
 
 @SuppressWarnings("unused")
 public class MonthButtonHandler extends CalendarMonthChanger{
@@ -28,6 +30,13 @@ public class MonthButtonHandler extends CalendarMonthChanger{
 
         } else {
             CheckNodes.removeChecksFromUI();
+            root.getChildren().remove(CheckDayButton.getButton());
+        }
+
+        if(monthTools.monthScannerCurrentIndex() == LocalDate.now().getMonthValue()) {
+            CheckDayButton.addCheckButton();
+        } else {
+            root.getChildren().remove(CheckDayButton.getButton());
         }
 
     };
@@ -46,6 +55,13 @@ public class MonthButtonHandler extends CalendarMonthChanger{
 
         } else {
             CheckNodes.removeChecksFromUI();
+            root.getChildren().remove(CheckDayButton.getButton());
+        }
+
+        if(monthTools.monthScannerCurrentIndex() == LocalDate.now().getMonthValue()) {
+            CheckDayButton.addCheckButton();
+        } else {
+            root.getChildren().remove(CheckDayButton.getButton());
         }
 
     };
