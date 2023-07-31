@@ -2,7 +2,6 @@ package com.github.ericnaibert.calendarchallenge.calendar.month;
 
 import com.github.ericnaibert.calendarchallenge.ApplicationInterface;
 import com.github.ericnaibert.calendarchallenge.calendar.CheckDayButton;
-import com.github.ericnaibert.calendarchallenge.calendar.CheckDayOld;
 import com.github.ericnaibert.calendarchallenge.calendar.TimeTools;
 import com.github.ericnaibert.calendarchallenge.storage.DateReader;
 import javafx.geometry.Insets;
@@ -18,13 +17,15 @@ import javafx.scene.paint.Color;
 
 public class CalendarMonthChanger extends ApplicationInterface {
 
-    protected static Label monthAndYear;
+    protected static Label monthAndYearLabel;
 
     public static void monthProperties() {
 
         TimeTools time = new TimeTools();
         MonthButtonHandler monthButtonHandler = new MonthButtonHandler();
         MonthTools monthTools = new MonthTools();
+
+        DateReader.dayMonthReader();
 
         HBox hBox = new HBox();
         hBox.setLayoutX(300);
@@ -41,16 +42,16 @@ public class CalendarMonthChanger extends ApplicationInterface {
         previousMonth.setOnMouseClicked(monthButtonHandler.previousEventHandler);
         hBox.getChildren().add(previousMonth);
 
-        monthAndYear = new Label();
-        monthAndYear.setText(MonthButtonHandler.getShowMonth() + ", " + time.getYearNow());
-        monthAndYear.setId("monthAndYearId");
-        monthAndYear.setAlignment(Pos.CENTER);
-        monthAndYear.setPrefWidth(400);
+        monthAndYearLabel = new Label();
+        monthAndYearLabel.setText(MonthButtonHandler.getShowMonth() + ", " + time.getYearNow());
+        monthAndYearLabel.setId("monthAndYearId");
+        monthAndYearLabel.setAlignment(Pos.CENTER);
+        monthAndYearLabel.setPrefWidth(400);
 
-        MonthButtonHandler.setShowMonth(String.valueOf(monthTools.getMonthString(monthTools.getCurrentShownMonth(0))));
-        monthAndYear.setText(MonthButtonHandler.getShowMonth() + ", " + MonthTools.getYear());
+        MonthButtonHandler.setShowMonth(String.valueOf(monthTools.getMonthString(monthTools.monthScannerDirectionToGo(0))));
+        monthAndYearLabel.setText(MonthButtonHandler.getShowMonth() + ", " + MonthTools.getYear());
 
-        hBox.getChildren().add(monthAndYear);
+        hBox.getChildren().add(monthAndYearLabel);
 
         Button nextMonth = new Button(">");
         nextMonth.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -58,8 +59,7 @@ public class CalendarMonthChanger extends ApplicationInterface {
         nextMonth.setOnMouseClicked(monthButtonHandler.nextEventHandler);
         hBox.getChildren().add(nextMonth);
 
-        DateReader.dayMonthReader();
-        CheckDayOld.checkOldDays(DateReader.getFileIndexNow());
+        //CheckDayOld.checkOldDays(DateReader.getMonthsFromFile().size());
 
         CheckDayButton.addCheckButton();
 

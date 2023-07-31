@@ -86,11 +86,6 @@ public class DateReader {
         return tempIntegerList;
     }
 
-    public static int getFileIndexNow() {
-
-        return monthsFromFile.size()-1;
-    }
-
     public static List<Integer> getMonthsFromFile() {
         return monthsFromFile;
     }

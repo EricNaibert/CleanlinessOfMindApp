@@ -2,6 +2,8 @@ package com.github.ericnaibert.calendarchallenge.calendar;
 
 import com.github.ericnaibert.calendarchallenge.ApplicationInterface;
 import com.github.ericnaibert.calendarchallenge.calendar.month.CalendarMonthChanger;
+import com.github.ericnaibert.calendarchallenge.calendar.month.MonthTools;
+import com.github.ericnaibert.calendarchallenge.storage.DateReader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -18,6 +20,7 @@ public class Calendar extends ApplicationInterface {
     public static void calendar() {
 
         TimeTools time = new TimeTools();
+        MonthTools monthTools = new MonthTools();
         Color translucentWhite = new Color(1.0, 1.0, 1.0, 0.5);
 
         FlowPane flowPane = new FlowPane();
@@ -52,7 +55,6 @@ public class Calendar extends ApplicationInterface {
         }
 
         DayNameLabel.dayNameLabel();
-
         CalendarMonthChanger.monthProperties();
 
         root.getChildren().add(flowPane);

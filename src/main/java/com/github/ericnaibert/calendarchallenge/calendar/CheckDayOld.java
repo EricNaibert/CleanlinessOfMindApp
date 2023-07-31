@@ -10,15 +10,15 @@ import java.util.Objects;
 
 public class CheckDayOld {
 
-    public static void checkOldDays(int month) {
+    public static void checkOldDays(int arrayPositionForMonth) {
 
         String imgPath = String.valueOf(Main.class.getResource("images/green_checkmark.png"));
         Image checkImage = new Image((Objects.requireNonNull(imgPath)));
         ImageView greenCheck;
 
-        for(int i = 0; i < DateReader.getDaysFromMonth(month).size(); i++) {
+        for(int i = 0; i < DateReader.getDaysFromMonth(arrayPositionForMonth).size(); i++) {
 
-            Calendar.vBoxList.get(DateReader.getDaysFromMonth(month).get(i)).getChildren().add(greenCheck = new ImageView(checkImage));
+            Calendar.vBoxList.get(DateReader.getDaysFromMonth(arrayPositionForMonth).get(i)).getChildren().add(greenCheck = new ImageView(checkImage));
 
             CheckNodes.addToCheckList(greenCheck);
         }

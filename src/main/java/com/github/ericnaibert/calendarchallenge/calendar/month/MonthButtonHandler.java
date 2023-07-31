@@ -1,10 +1,7 @@
 package com.github.ericnaibert.calendarchallenge.calendar.month;
 
-import com.github.ericnaibert.calendarchallenge.calendar.Calendar;
-import com.github.ericnaibert.calendarchallenge.calendar.CheckDayButton;
-import com.github.ericnaibert.calendarchallenge.calendar.CheckDayOld;
 import com.github.ericnaibert.calendarchallenge.calendar.TimeTools;
-import com.github.ericnaibert.calendarchallenge.storage.CheckNodes;
+import com.github.ericnaibert.calendarchallenge.storage.DateReader;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
@@ -13,70 +10,36 @@ public class MonthButtonHandler extends CalendarMonthChanger{
 
     private static String showMonth;
 
-    public EventHandler<MouseEvent> previousEventHandler = new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent event) {
+    private static int currentFileMonth;
 
-            TimeTools time = new TimeTools();
-            MonthTools monthTools = new MonthTools();
-            setShowMonth(String.valueOf(monthTools.getMonthString(monthTools.getCurrentShownMonth(-1))));
+    public EventHandler<MouseEvent> previousEventHandler = event -> {
 
-            monthAndYear.setText(MonthButtonHandler.getShowMonth() + ", " + MonthTools.getYear());
+        TimeTools time = new TimeTools();
+        MonthTools monthTools = new MonthTools();
 
-            /*
-            if(MonthTools.getArrayScanner() + 1 == DayMonthReader.getReadedMonth()) {
+        setShowMonth(monthTools.getMonthString(monthTools.monthScannerDirectionToGo(-1)));
+        monthAndYearLabel.setText(getShowMonth() + ", " + MonthTools.getYear());
 
-                for(int i = 0; i < Calendar.vBoxList.size(); i++) {
-                    Calendar.vBoxList.get(i).getChildren().removeAll(CheckNodes.getCheckList());
-                }
-
-                CheckDayOld.checkOldDays(time.getMonthNow());
-                CheckDayButton.addCheckButton();
-
-            } else {
-                for(int i = 0; i < Calendar.vBoxList.size(); i++) {
-                    Calendar.vBoxList.get(i).getChildren().removeAll(CheckNodes.getCheckList());
-                }
-                //CheckDayOld.checkOldDays(time.getMonthOld());
-                root.getChildren().remove(CheckDayButton.getButton());
-            }
-             */
-
-            System.out.println(MonthTools.getArrayScanner());
+        if(monthTools.getIndexIfMonthExist() != 404) {
+           System.out.println("HAS PREVIOUS");
+           System.out.println(DateReader.getMonthsFromFile().get(monthTools.getIndexIfMonthExist()));
         }
+
     };
 
-    public EventHandler<MouseEvent> nextEventHandler = new EventHandler<MouseEvent>() {
+    public EventHandler<MouseEvent> nextEventHandler = event -> {
 
-        @Override
-        public void handle(MouseEvent event) {
+        TimeTools time = new TimeTools();
+        MonthTools monthTools = new MonthTools();
 
-            TimeTools time = new TimeTools();
-            MonthTools monthTools = new MonthTools();
+        setShowMonth(monthTools.getMonthString(monthTools.monthScannerDirectionToGo(1)));
+        monthAndYearLabel.setText(getShowMonth() + ", " + MonthTools.getYear());
 
-            setShowMonth(String.valueOf(monthTools.getMonthString(monthTools.getCurrentShownMonth(1))));
-
-            monthAndYear.setText(MonthButtonHandler.getShowMonth() + ", " + MonthTools.getYear());
-
-            /*
-            if(MonthTools.getArrayScanner() + 1 == DayMonthReader.getReadedMonth()) {
-
-                for(int i = 0; i < Calendar.vBoxList.size(); i++) {
-                    Calendar.vBoxList.get(i).getChildren().removeAll(CheckNodes.getCheckList());
-                }
-
-                CheckDayOld.checkOldDays(time.getMonthNow());
-                CheckDayButton.addCheckButton();
-
-            } else {
-                for(int i = 0; i < Calendar.vBoxList.size(); i++) {
-                    Calendar.vBoxList.get(i).getChildren().removeAll(CheckNodes.getCheckList());
-                }
-                //CheckDayOld.checkOldDays(time.getMonthNext());
-                root.getChildren().remove(CheckDayButton.getButton());
-            }
-            */
+        if(monthTools.getIndexIfMonthExist() != 404) {
+            System.out.println("HAS NEXT");
+            System.out.println(DateReader.getMonthsFromFile().get(monthTools.getIndexIfMonthExist()));
         }
+
     };
 
     public static String getShowMonth() {
@@ -87,4 +50,11 @@ public class MonthButtonHandler extends CalendarMonthChanger{
         MonthButtonHandler.showMonth = showMonth;
     }
 
+    public static int getCurrentFileMonth() {
+        return currentFileMonth;
+    }
+
+    public static void setCurrentFileMonth(int currentFileMonth) {
+        MonthButtonHandler.currentFileMonth = currentFileMonth;
+    }
 }

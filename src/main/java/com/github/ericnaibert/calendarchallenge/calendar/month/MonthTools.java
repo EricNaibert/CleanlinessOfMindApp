@@ -1,6 +1,7 @@
 package com.github.ericnaibert.calendarchallenge.calendar.month;
 
-import com.github.ericnaibert.calendarchallenge.calendar.TimeTools;
+
+import com.github.ericnaibert.calendarchallenge.storage.DateReader;
 
 import java.time.LocalDate;
 
@@ -8,6 +9,7 @@ public class MonthTools {
 
     protected static int[] monthArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
     private static int arrayScanner = LocalDate.now().getMonthValue() -1;
+
     private static Integer year = LocalDate.now().getYear();
 
     public String getMonthString(int monthNumber) {
@@ -31,9 +33,7 @@ public class MonthTools {
         };
     }
 
-    public int getCurrentShownMonth(int direction) {
-
-        TimeTools time = new TimeTools();
+    public int monthScannerDirectionToGo(int direction) {
 
         if(direction == 0) {
             return monthArray[arrayScanner];
@@ -72,11 +72,16 @@ public class MonthTools {
         }
     }
 
-    public static Integer getYear() {
-        return year;
+    public int getIndexIfMonthExist() {
+
+        if(DateReader.getMonthsFromFile().contains(arrayScanner+1)) {
+            return DateReader.getMonthsFromFile().indexOf(arrayScanner+1);
+        } else {
+            return 404;
+        }
     }
 
-    public static int getArrayScanner() {
-        return arrayScanner;
+    public static Integer getYear() {
+        return year;
     }
 }
