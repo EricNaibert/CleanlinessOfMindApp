@@ -3,7 +3,6 @@ package com.github.ericnaibert.calendarchallenge.calendar;
 import com.github.ericnaibert.calendarchallenge.ApplicationInterface;
 import com.github.ericnaibert.calendarchallenge.calendar.month.CalendarMonthChanger;
 import com.github.ericnaibert.calendarchallenge.calendar.month.MonthTools;
-import com.github.ericnaibert.calendarchallenge.storage.DateReader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -13,7 +12,7 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Calendar extends ApplicationInterface {
+public class ApplicationCalendar extends ApplicationInterface {
 
     public static final List<VBox> vBoxList = new ArrayList<>();
 

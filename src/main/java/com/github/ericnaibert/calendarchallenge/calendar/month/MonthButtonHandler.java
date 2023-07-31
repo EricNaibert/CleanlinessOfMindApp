@@ -1,6 +1,8 @@
 package com.github.ericnaibert.calendarchallenge.calendar.month;
 
+import com.github.ericnaibert.calendarchallenge.calendar.CheckDayOld;
 import com.github.ericnaibert.calendarchallenge.calendar.TimeTools;
+import com.github.ericnaibert.calendarchallenge.storage.CheckNodes;
 import com.github.ericnaibert.calendarchallenge.storage.DateReader;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
@@ -21,8 +23,11 @@ public class MonthButtonHandler extends CalendarMonthChanger{
         monthAndYearLabel.setText(getShowMonth() + ", " + MonthTools.getYear());
 
         if(monthTools.getIndexIfMonthExist() != 404) {
-           System.out.println("HAS PREVIOUS");
-           System.out.println(DateReader.getMonthsFromFile().get(monthTools.getIndexIfMonthExist()));
+           CheckNodes.removeChecksFromUI();
+           CheckDayOld.checkOldDays(monthTools.getIndexIfMonthExist());
+
+        } else {
+            CheckNodes.removeChecksFromUI();
         }
 
     };
@@ -36,8 +41,11 @@ public class MonthButtonHandler extends CalendarMonthChanger{
         monthAndYearLabel.setText(getShowMonth() + ", " + MonthTools.getYear());
 
         if(monthTools.getIndexIfMonthExist() != 404) {
-            System.out.println("HAS NEXT");
-            System.out.println(DateReader.getMonthsFromFile().get(monthTools.getIndexIfMonthExist()));
+            CheckNodes.removeChecksFromUI();
+            CheckDayOld.checkOldDays(monthTools.getIndexIfMonthExist());
+
+        } else {
+            CheckNodes.removeChecksFromUI();
         }
 
     };

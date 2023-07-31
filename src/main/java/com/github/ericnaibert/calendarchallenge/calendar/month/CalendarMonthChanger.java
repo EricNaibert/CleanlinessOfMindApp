@@ -2,6 +2,7 @@ package com.github.ericnaibert.calendarchallenge.calendar.month;
 
 import com.github.ericnaibert.calendarchallenge.ApplicationInterface;
 import com.github.ericnaibert.calendarchallenge.calendar.CheckDayButton;
+import com.github.ericnaibert.calendarchallenge.calendar.CheckDayOld;
 import com.github.ericnaibert.calendarchallenge.calendar.TimeTools;
 import com.github.ericnaibert.calendarchallenge.storage.DateReader;
 import javafx.geometry.Insets;
@@ -22,8 +23,8 @@ public class CalendarMonthChanger extends ApplicationInterface {
     public static void monthProperties() {
 
         TimeTools time = new TimeTools();
-        MonthButtonHandler monthButtonHandler = new MonthButtonHandler();
         MonthTools monthTools = new MonthTools();
+        MonthButtonHandler monthButtonHandler = new MonthButtonHandler();
 
         DateReader.dayMonthReader();
 
@@ -59,7 +60,7 @@ public class CalendarMonthChanger extends ApplicationInterface {
         nextMonth.setOnMouseClicked(monthButtonHandler.nextEventHandler);
         hBox.getChildren().add(nextMonth);
 
-        //CheckDayOld.checkOldDays(DateReader.getMonthsFromFile().size());
+        CheckDayOld.checkOldDays(monthTools.getIndexIfMonthExist());
 
         CheckDayButton.addCheckButton();
 

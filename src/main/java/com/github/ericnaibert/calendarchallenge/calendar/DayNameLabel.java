@@ -2,7 +2,7 @@ package com.github.ericnaibert.calendarchallenge.calendar;
 
 import javafx.scene.control.Label;
 
-public class DayNameLabel extends Calendar{
+public class DayNameLabel extends ApplicationCalendar {
 
     public static void dayNameLabel() {
 

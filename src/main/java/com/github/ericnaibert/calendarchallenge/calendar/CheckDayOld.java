@@ -18,7 +18,7 @@ public class CheckDayOld {
 
         for(int i = 0; i < DateReader.getDaysFromMonth(arrayPositionForMonth).size(); i++) {
 
-            Calendar.vBoxList.get(DateReader.getDaysFromMonth(arrayPositionForMonth).get(i)).getChildren().add(greenCheck = new ImageView(checkImage));
+            ApplicationCalendar.vBoxList.get(DateReader.getDaysFromMonth(arrayPositionForMonth).get(i)).getChildren().add(greenCheck = new ImageView(checkImage));
 
             CheckNodes.addToCheckList(greenCheck);
         }

@@ -1,6 +1,6 @@
 package com.github.ericnaibert.calendarchallenge;
 
-import com.github.ericnaibert.calendarchallenge.calendar.Calendar;
+import com.github.ericnaibert.calendarchallenge.calendar.ApplicationCalendar;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -24,7 +24,7 @@ public class ApplicationInterface extends Application {
         Scene scene = new Scene(root, 1000, 720);
         scene.getStylesheets().add(cssPath);
 
-        Calendar.calendar();
+        ApplicationCalendar.calendar();
 
         stage.setTitle("Calendar Challenge");
         stage.setResizable(false);

@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
 
 import java.util.Objects;
 
-public class CheckDayButton extends Calendar {
+public class CheckDayButton extends ApplicationCalendar {
 
     private static Button button;
 
@@ -39,7 +39,7 @@ public class CheckDayButton extends Calendar {
             //if(!file.getFileToSave().exists()) {
 
             DateStorage.storeDate();
-            Calendar.vBoxList.get(time.getPositionToCheck()).getChildren().add(new ImageView(checkImage));
+            ApplicationCalendar.vBoxList.get(time.getPositionToCheck()).getChildren().add(new ImageView(checkImage));
 
 
 
