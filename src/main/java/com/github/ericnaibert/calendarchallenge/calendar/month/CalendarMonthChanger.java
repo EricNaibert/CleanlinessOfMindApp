@@ -60,7 +60,9 @@ public class CalendarMonthChanger extends ApplicationInterface {
         nextMonth.setOnMouseClicked(monthButtonHandler.nextEventHandler);
         hBox.getChildren().add(nextMonth);
 
-        CheckDayOld.checkOldDays(monthTools.getIndexIfMonthExist());
+        if(monthTools.getIndexIfMonthExist() != 404) {
+            CheckDayOld.checkOldDays(monthTools.getIndexIfMonthExist());
+        }
 
         CheckDayButton.addCheckButton();
 

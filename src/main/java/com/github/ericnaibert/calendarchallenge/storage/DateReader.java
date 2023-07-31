@@ -98,6 +98,10 @@ public class DateReader {
         return yearsFromFile;
     }
 
+    public static int getLastIndexFromDaysFromFile() {
+        return daysFromFile.size()-1;
+    }
+
 }
 
 
