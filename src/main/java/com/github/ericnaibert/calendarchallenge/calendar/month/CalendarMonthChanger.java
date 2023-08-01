@@ -4,6 +4,7 @@ import com.github.ericnaibert.calendarchallenge.ApplicationInterface;
 import com.github.ericnaibert.calendarchallenge.calendar.CheckDayButton;
 import com.github.ericnaibert.calendarchallenge.calendar.CheckDayOld;
 import com.github.ericnaibert.calendarchallenge.calendar.TimeTools;
+import com.github.ericnaibert.calendarchallenge.storage.CheckNodes;
 import com.github.ericnaibert.calendarchallenge.storage.DateReader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,6 +20,7 @@ import javafx.scene.paint.Color;
 public class CalendarMonthChanger extends ApplicationInterface {
 
     protected static Label monthAndYearLabel;
+    private static int lastSavedDay;
 
     public static void monthProperties() {
 
@@ -27,6 +29,9 @@ public class CalendarMonthChanger extends ApplicationInterface {
         MonthButtonHandler monthButtonHandler = new MonthButtonHandler();
 
         DateReader.dayMonthReader();
+
+        int daysListIndex = DateReader.getDaysFromMonth(DateReader.getLastIndexFromDaysFromFile()).size() - 1;
+        lastSavedDay = DateReader.getDaysFromMonth(DateReader.getLastIndexFromDaysFromFile()).get(daysListIndex);
 
         HBox hBox = new HBox();
         hBox.setLayoutX(300);
@@ -68,6 +73,10 @@ public class CalendarMonthChanger extends ApplicationInterface {
 
         root.getChildren().add(hBox);
 
+    }
+
+    public static int getLastSavedDay() {
+        return lastSavedDay;
     }
 
 }

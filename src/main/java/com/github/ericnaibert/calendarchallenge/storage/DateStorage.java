@@ -1,11 +1,10 @@
 package com.github.ericnaibert.calendarchallenge.storage;
 
 import com.github.ericnaibert.calendarchallenge.calendar.TimeTools;
-import com.github.ericnaibert.calendarchallenge.calendar.month.MonthTools;
+import com.github.ericnaibert.calendarchallenge.calendar.month.CalendarMonthChanger;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,7 +21,6 @@ public class DateStorage {
         String userHome = System.getProperty("user.home");
 
         TimeTools time = new TimeTools();
-        MonthTools monthTools = new MonthTools();
 
         File fileToSave = new File(userHome + pathSeparator + "MindCleanlinessApp" + pathSeparator + "DayOnGrid.jcm");
 
@@ -35,10 +33,14 @@ public class DateStorage {
 
                 if(monthToWrite == DateReader.getMonthsFromFile().get(DateReader.getLastIndexFromDaysFromFile())) {
 
-                    DateModifier.modifyDateToWrite();
+                    if(CalendarMonthChanger.getLastSavedDay() != time.getPositionToCheck()) {
 
-                    dataOutputStream.writeBytes(DateModifier.getNewStringToWrite());
-                    dataOutputStream.close();
+                        DateModifier.modifyDateToWrite();
+
+                        dataOutputStream.flush();
+                        dataOutputStream.writeBytes(DateModifier.getNewStringToWrite());
+                        dataOutputStream.close();
+                    }
 
                 } else {
                     dataOutputStream.writeBytes(getOldFileToWrite() + monthToWrite + "=" + dayListToWrite + "/" + yearToWrite + "#");

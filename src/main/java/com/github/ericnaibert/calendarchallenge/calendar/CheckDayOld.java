@@ -22,6 +22,14 @@ public class CheckDayOld {
 
             CheckNodes.addToCheckList(greenCheck);
         }
+
+        if(CheckDayButton.isTodayCheck()) {
+            TimeTools time = new TimeTools();
+
+            ApplicationCalendar.vBoxList.get(time.getPositionToCheck()).getChildren().add(greenCheck = new ImageView(checkImage));
+
+            CheckNodes.addToCheckList(greenCheck);
+        }
     }
 
 }
