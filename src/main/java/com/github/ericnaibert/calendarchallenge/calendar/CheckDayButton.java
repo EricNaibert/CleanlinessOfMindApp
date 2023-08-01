@@ -1,6 +1,7 @@
 package com.github.ericnaibert.calendarchallenge.calendar;
 
 import com.github.ericnaibert.calendarchallenge.Main;
+import com.github.ericnaibert.calendarchallenge.storage.DateReader;
 import com.github.ericnaibert.calendarchallenge.storage.DateStorage;
 import com.github.ericnaibert.calendarchallenge.storage.PathDirectory;
 import javafx.scene.control.Button;
@@ -35,13 +36,23 @@ public class CheckDayButton extends ApplicationCalendar {
             TimeTools time = new TimeTools();
             PathDirectory file = new PathDirectory();
 
+            if(!file.getFileToSave().exists()) {
 
-            //if(!file.getFileToSave().exists()) {
+                DateStorage.storeDate();
+                ApplicationCalendar.vBoxList.get(time.getPositionToCheck()).getChildren().add(new ImageView(checkImage));
+            }
 
-            DateStorage.storeDate();
-            ApplicationCalendar.vBoxList.get(time.getPositionToCheck()).getChildren().add(new ImageView(checkImage));
+            if(file.getFileToSave().exists()) {
 
+                int index = DateReader.getDaysFromMonth(DateReader.getLastIndexFromDaysFromFile()).size()-1;
+                int lastSavedDay = DateReader.getDaysFromMonth(DateReader.getLastIndexFromDaysFromFile()).get(index);
 
+                if(lastSavedDay != time.getPositionToCheck()) {
+
+                    DateStorage.storeDate();
+                    ApplicationCalendar.vBoxList.get(time.getPositionToCheck()).getChildren().add(new ImageView(checkImage));
+                }
+            }
 
         });
 
